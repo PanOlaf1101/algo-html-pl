@@ -65,6 +65,7 @@ li {
 li > img {
 	height: 28px;
 	width: auto;
+	border-radius: 50%;
 }
 
 footer {
