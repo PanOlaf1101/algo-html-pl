@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+	<title>Grafy</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> -->
+	<link href="./style.css" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-dark bg-info navbar-expand-md">
+			<a href="./index.html" class="navbar-brand d-none d-md-block px-2">
+				<img src="./img/home.svg" height="30" width="30">
+			</a>
+			<button class="navbar-toggler btn" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu" aria-expanded="false">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse text-center d-md-flex" id="navmenu">
+				<a class="nav-link d-md-none my-2 my-md-1 mx-md-3" href="./index.html">Strona główna</a>
+				<a class="nav-link my-2 my-md-1 mx-md-3" href="./sortowanie.html">Sortowanie</a>
+				<a class="nav-link my-2 my-md-1 mx-md-3" href="./grafy.html">Grafy</a>
+				<a class="nav-link my-2 my-md-1 mx-md-3" href="./tekst.html">Tekstowe</a>
+				<a class="nav-link my-2 my-md-1 mx-md-3" href="./algebra.html">Algebra</a>
+			</div>
+		</nav>
+		<!--<article>
+			<a href="#s-dfs">DFS</a>
+			<a href="#s-bfs">BFS</a>
+			<a href="#s-dijkstra">Dijkstra</a>
+			<a href="#s-tree">Drzewo</a>
+			<a href="#s-heap">Kopiec</a>
+		</article>-->
+	</header>
+	<main class="container">
+		<div class="row my-3">
+			<section>
+				<h2>Grafy: wprowadzenie</h2>
+				<p>Jak napisałem już na stronie głównej, grafy to struktury danych składające się z wierzchołków oraz łączących je krawędzi. Można wyobrazić sobie graf jako mapę, wierzchołek - jako miasto, a krawędź - jako drogę łączącą miasta-wierzchołki.</p>
+				<h5>Cykle dzielimy na</h5>
+				<ul>
+					<li>Cykliczne i acykliczne. Cykl to "pętla" składająca się z minimalnie 3 wierzchołków.</li>
+					<li>Ważone i nieważone. Waga reprezentuje długość krawędzi (odległość między miastami).</li>
+					<li>Skierowane i nieskierowane. W grafach nieskierowanych wszystkie krawędzie są dwustronne.</li>
+					<li>Spójne i niespójne. W grafach spójnych da się dojść między dwoma dowolnymi wierzchołkami.</li>
+				</ul>
+
+				<img src="./img/mapa.png" class="img-fluid mx-auto d-block" alt="Nie udało się wczytać mapy!">
+				<p>We poniższych przykładach będę używać tej mapy. (Każde miasto otrzymało swój numer na potrzebę tej strony.)</p>
+				<p>Poniższy przykład wyświetla listę sąsiedztwa, czyli dla każdego wierzchołka zwracamy numery jego sąsiadów oraz odległości między nimi. Każdy wierzchołek składa się z listy sąsiadów, a dokładniej: z ich numerów oraz dystansu do nich.</p>
+				<div class="textarea col-12 col-lg-8 offset-lg-2" id="neighbors"></div>
+			</section>
+			<section id="s-dfs">
+				<h2>DFS</h2>
+				<p>Przeszukiwanie w głąb, czyli DFS (ang. Depth First Search), to algorytm rekurencjny. Idzie cały czas "przed siebie", aż nie wejdzie do wierzchołka bez nieodwiedzonych sąsiadów. Potem cofa się do poprzedniego wierzchołka i przechodzi jego nieodwiedzonych sąsiadów. Poniższa wersja przedstawia wersję algorytmu dla grafu nieważonego:</p>
+				<h5>Poniżej jest przedstawiona kolejność przechodzenia algorytmu DFS dla naszego grafu (zaczynając od wierzchołka 0):</h5>
+				<div class="row" id="dfs-img">
+					<img class="img-fluid col-12 col-md-6 col-lg-4 col-xl-2" src="./img/dfs/dfs0.jpg" alt="">
+					<img class="img-fluid col-12 col-md-6 col-lg-4 col-xl-2" src="./img/dfs/dfs1.jpg" alt="">
+					<img class="img-fluid col-12 col-md-6 col-lg-4 col-xl-2" src="./img/dfs/dfs2.jpg" alt="">
+					<img class="img-fluid col-12 col-md-6 col-lg-4 col-xl-2" src="./img/dfs/dfs3.jpg" alt="">
+					<img class="img-fluid col-12 col-md-6 col-lg-4 col-xl-2" src="./img/dfs/dfs4.jpg" alt="">
+					<img class="img-fluid col-12 col-md-6 col-lg-4 col-xl-2" src="./img/dfs/dfs5.jpg" alt="">
+				</div>
+				<div class="textarea col-12 col-lg-8 offset-lg-2" id="dfs"></div>
+			</section>
+			<section id="s-bfs">
+				<h2>BFS</h2>
+				<p>Przeszukiwanie wszerz, czyli BFS (ang. Breadth First Search), przeszukuje najpierw sąsiadów wierzchołka startowego, potem sąsiadów sąsiadów i tak w kołko.</p>
+				<h5>Kolejność przechodzenia algorytmu BFS:</h5>
+				<div class="row" id="bfs-img">
+					<img class="img-fluid col-12, col-md-6 col-lg-4 col-xl-2 offset-xl-3" src="./img/bfs/bfs0.jpg" alt="">
+					<img class="img-fluid col-12, col-md-6 col-lg-4 col-xl-2" src="./img/bfs/bfs1.jpg" alt="">
+					<img class="img-fluid col-12, col-md-6 col-lg-4 col-xl-2" src="./img/bfs/bfs2.jpg" alt="">
+				</div>
+				<div class="textarea col-12 col-lg-8 offset-lg-2" id="bfs"></div>
+			</section>
+			<section id="s-dijkstra">
+				<h2>Algorytm Dijkstry</h2>
+				<p>Algorytm Dijkstry (czyt. Dajkstry) sprawdza mimalną odłegłość między wierzchołkiem startowym, a innymi wierzchołkami w grafie ważonym. Poniższa implementacja jest podobna do BFS, ale zamiast sprawdzać czy dany sąsiad wierzchołka został już odwiedzony, sprawdzamy czy jego aktualnie ustalony dystans jest większy od sumy dystansu aktualnego wierzchołka i odległości od sąsiada.</p>
+				<div class="textarea col-12 col-lg-8 offset-lg-2" id="dijkstra"></div>
+			</section>
+			<section id="s-tree">
+				<h2>Drzewo</h2>
+				<p>Drzewo to graf, w którym pomiędzy dwoma dowolnymi punktami można się przemieszczać w tylko jeden sposób. W drzewie każdy wierzchołek ma synów oraz ojca (nie licząc tzw. korzenia). Poniżej omówię drzewo binarne, czyli takie, gdzie każdy wierzchołek ma maksymalnie 2 synów. Tutaj wyjątkowo oznaczę korzeń jako jedynkę, a nie zero.</p>
+				<img class="img-fluid col-12 col-lg-6 offset-lg-3" src="./img/tree.png" alt="Drzewo binarne">
+				<p>Jak widać, dla każdego wierzchołka o indeksie <i>n</i> indeks syna lewego to 2<i>n</i>, a syna prawego - 2<i>n</i>+1. Możemy łatwo zaimplemenować takie drzewo za pomocą zwykłej tablicy.</p>
+				<div class="textarea col-12 col-lg-8 offset-lg-2" id="tree"></div>
+				<h2>BST</h2>
+				<p>drzewo wyszukiwania binarnego (ang. Binary Search Tree) to drzewo binarne, gdzie lewy syn ma mniejszą lub równą wartość od ojca, a syn prawy - większą. Dokładny wygląd drzewa BST jest zależny od kolejności umieszczanych w nim elementów. Poniżej znajduje się program wczytujący <i>n</i> liczb i imieszczającym je po kolei do drzewa BST.</p>
+				<div class="textarea col-12 col-lg-8 offset-lg-2" id="bst"></div>
+			</section>
+			<section id="s-heap">
+				<h2>Kopiec</h2>
+				<p>Kopiec jest drzewem binarnym, gdzie ojciec jest zawsze mniejszy od syna. Po dodaniu nowej wartości do kopca należy w razie potrzeby zamieć ją miejscami z jej ojcem. Kolejność dodawania elementów do kopca jest zgodna z ich ideksami.</p>
+				<div class="textarea col-12 col-lg-8 offset-lg-2" id="heap"></div>
+			</section>
+			<section id="s-pre-in-post">
+				<h2>Preorder, Inonder, Postorder</h2>
+				<p>Powyższe terminy odnoszą się kolejności w jakiej oznaczamy odwiedzane wierzchołki w drzewie binarnym.</p>
+				<ul>
+					<li><b>Preorder</b>: Oznaczenie następuje przed odwiedzeniem synów</li>
+					<li><b>Inorder</b>: Oznaczamy wierzchołek po odwiedzeniu lewego syna, ale przed odwiedzeniem prawego syna</li>
+					<li><b>Postorder</b>: Oznaczamy wierzchołek po odwiedzeniu wszystkich synów</li>
+				</ul>
+				<div class="textarea col-12 col-lg-8 offset-lg-2" id="preinpost"></div>
+				<p>Dla wygody wprowadźmy sobie takie symbole:</p>
+				<ul>
+					<li>Preorder: <b>&lt;</b></li>
+					<li>Inorder: <b>^</b></li>
+					<li>Postorder: <b>&gt;</b></li>
+				</ul>
+				<p>Jeśli wartości wierzchołków ponumerujemy zgodnie z ich ideksami otrzymamy taki wynik na wyjściu:</p>
+				<div class="code-result col-12 col-lg-8 offset-lg-2">
+					&lt;1 &lt;2 &lt;4 ^4 &gt;4 ^2 &lt;5 ^5 &gt;5 &gt;2 ^1 &lt;3 &lt;6 ^6 &gt;6 ^3 &lt;7 ^7 &gt;7 &gt;3 &gt;1
+				</div>
+			</section>
+		</div>
+	</main>
+	<footer>Autor: Olaf A. Mianowski</footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+</html>

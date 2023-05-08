@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html {
+	height: 100%;
+}
+
+body {
+	background-color: var(--bs-gray-800);
+	color: var(--bs-white);
+	position: relative;
+	min-height: 100%;
+}
+
+#navmenu {
+	justify-content: center;
+}
+
+header > article {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	background-color: black;
+}
+
+header > article > a {
+	color: #efefef !important;
+	font-size: x-large;
+	margin-left: 7px;
+	margin-right: 7px;
+}
+
+h1, h2 {
+	text-align: center;
+}
+
+section {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+img {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+footer a {
+	font-size: .5rem;
+	opacity: .5;
+}
+
+h1 img {
+	width: 1em;
+	height: 1em;
+}
+
+p {
+	text-align: justify;
+	font-size: large;
+}
+
+li {
+	font-size: 110%;
+}
+
+li > img {
+	height: 28px;
+	width: auto;
+}
+
+footer {
+	position: relative;
+	bottom: 0;
+	text-align: center;
+	width: 100%;
+	background-color: black;
+	padding: 4px;
+}
+
+.textarea, .code-result {
+	font-size: x-large;
+	background-color: #0a0a29 !important;
+	border: 3px solid black;
+	font-family: 'Roboto', sans-serif;
+	padding: 3px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.cpp-keyword {
+	color: #ff3377;
+}
+
+.cpp-type {
+	color: var(--bs-info);
+}
+
+.cpp-number {
+	color: var(--bs-orange);
+}
+
+.cpp-preprocessor {
+	color: #20c997;
+}
+
+.cpp-operator {
+	color: #d8b701;
+	margin-left: 1px;
+	margin-right: 1px;
+}
+
+.cpp-comment {
+	color: gray !important;
+}
