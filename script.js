@@ -1,10 +1,6 @@
 const keywords = ['for', 'while', 'if', 'else', 'do', 'return', 'struct', 'true', 'false', 'typedef', 'const', 'goto'];
 const types = ['int', 'void', 'auto', 'bool', 'long'];
-const std = [
-	['utility', 'swap'], ['algorithm', 'max'], ['algorithm', 'min'],
-	['iostream', 'cout'], ['iostream', 'cin'], ['vector', 'vector'],
-	['queue', 'queue']
-];
+const std = [['utility', 'swap'], ['algorithm', 'max'], ['algorithm', 'min'], ['iostream', 'cout'], ['iostream', 'cin'], ['vector', 'vector'], ['queue', 'queue'], ['string', 'string']];
 
 //// //// //// ////
 
@@ -15,15 +11,16 @@ function repl(elem, original, replaced) {
 }
 
 (async function() {
-	for(const area of codes) {
+	for(const c of codes) {
+		const area = document.createElement('div');
 		try {
-			area.innerText = await fetch('./algorithms/' + area.id + '.cpp').then(r => {
+			area.innerText = await fetch('./algorithms/' + c.id + '.cpp').then(r => {
 				if(!r.ok)
 					throw new Error();
 				return r.text();
 			});
 		} catch {
-			area.innerHTML = `Nie udało się wczytać pliku "${area.id}.cpp"!`;
+			area.innerHTML = `Nie udało się wczytać pliku "${c.id}.cpp"!`;
 			continue;
 		}
 		repl(area, /(\*=|\/=|&lt;&lt;|&gt;&gt;|&lt;=|&gt;=|==|=|\+=|-=|\+\+|--|\+|-|\[|\]|\(|\)|\{|\}| \* | \/ |&lt;|&gt;|&amp;&amp;|&amp;|\||\^| : |!|%)/g, '<span class="cpp-operator">$&</span>');
@@ -40,6 +37,8 @@ function repl(elem, original, replaced) {
 			repl(area, word, `<span class="cpp-type">${word}</span>`);
 		for(const i of std)
 			repl(area, 'std::' + i[1], `<a href="https://cplusplus.com/reference/${i[0]}/${i[1]}/" target="_blank">std::${i[1]}</a>`);
+
+		c.appendChild(area);
 	}
 })()
 

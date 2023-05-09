@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');*/
 
 html {
 	height: 100%;
@@ -81,10 +81,16 @@ footer {
 	font-size: x-large;
 	background-color: #0a0a29 !important;
 	border: 3px solid black;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Comic Sans', sans-serif;
 	padding: 3px;
 	margin-top: 5px;
 	margin-bottom: 10px;
+	overflow-x: scroll;
+}
+
+.textarea > div {
+	position: relative;
+	min-width: max-content;
 }
 
 .cpp-keyword {
