@@ -26,7 +26,7 @@ function repl(elem, original, replaced) {
 		repl(area, /(\*=|\/=|&lt;&lt;|&gt;&gt;|&lt;=|&gt;=|==|=|\+=|-=|\+\+|--|\+|-|\[|\]|\(|\)|\{|\}| \* | \/ |&lt;|&gt;|&amp;&amp;|&amp;|\||\^| : |!|%)/g, '<span class="cpp-operator">$&</span>');
 		repl(area, /\/\/(.*?)<br>/g, '<span class="cpp-comment">$&</span>');
 		repl(area, /\/\*(.*?)\*\//g, '<span class="cpp-comment">$&</span>');
-		repl(area, '\t', '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+		repl(area, '\t', '&nbsp;&nbsp;&nbsp;&nbsp;');
 
 		repl(area, /(#include <span class="cpp-operator">&lt;<\/span>)(\w+?)(<span class="cpp-operator">&gt;<\/span><br>)/g, '<span class="cpp-preprocessor">$1<a href="https://cplusplus.com/reference/$2" target="_blank">$2</a>$3</span>');
 		repl(area, /\d+/g, '<span class="cpp-number">$&</span>');
