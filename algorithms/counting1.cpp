@@ -1,8 +1,8 @@
 #include <algorithm>
 
 void sortowanie_przez_zliczanie(int tablica[], int n) {
-	int maks = -2147483648, mini = 2147483647;
-	for(int i = 0; i < n; ++i) {
+	int maks = tablica[0], mini = tablica[0];
+	for(int i = 1; i < n; ++i) {
 		maks = std::max(maks, tablica[i]);
 		mini = std::min(mini, tablica[i]);
 	}
